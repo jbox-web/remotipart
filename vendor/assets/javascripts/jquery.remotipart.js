@@ -9,35 +9,31 @@
 
     setup: function(form) {
       form
-        // Append hidden input so we can tell from back-end when form has been submitted by remotipart
-        .append($('<input />', {
-          'id': "remotipart_submitted",
-          type: "hidden",
-          name: "remotipart_submitted",
-          value: true
-        }))
-
         // Allow setup part of $.rails.handleRemote to setup remote settings before canceling default remote handler
         // This is required in order to change the remote settings using the form details
-        .bind('ajax:beforeSend.remotipart', function(e, xhr, settings){
-
-          //Prevent this from running again to avoid infinite looping
-          $(this).unbind('ajax:beforeSend.remotipart')
-
+        .one('ajax:beforeSend.remotipart', function(e, xhr, settings){
           // Delete the beforeSend bindings, since we're about to re-submit via ajaxSubmit with the beforeSubmit
           // hook that was just setup and triggered via the default `$.rails.handleRemote`
           // delete settings.beforeSend;
+          delete settings.beforeSend;
+
           settings.iframe      = true;
           settings.files       = $($.rails.fileInputSelector, form);
-          settings.data        = $(this).serializeArray();
+          settings.data        = form.serializeArray();
           settings.processData = false;
 
-          // Second verse, same as the first
-          $.rails.ajax(settings);
+          // Modify some settings to integrate JS request with rails helpers and middleware
+          if (settings.dataType === undefined) { settings.dataType = 'script *'; }
+          settings.data.push({name: 'remotipart_submitted', value: true});
+
+          // Allow remotipartSubmit to be cancelled if needed
+          if ($.rails.fire(form, 'ajax:remotipartSubmit', [xhr, settings])) {
+            // Second verse, same as the first
+            $.rails.ajax(settings);
+          }
 
           //Run cleanup
-          $(this).children("#remotipart_submitted").remove();
-          $(this).removeData('remotipartSubmitted');
+          remotipart.teardown(form);
 
           // Cancel the jQuery UJS request
           return false;
@@ -51,17 +47,14 @@
     teardown: function(form) {
       form
         .unbind('ajax:beforeSend.remotipart')
-        .children('#remotipart_submitted').remove();
-      delete form.data.remotipartSubmitted;
+        .removeData('remotipartSubmitted')
     }
   };
 
   $('form').live('ajax:aborted:file', function(){
     var form = $(this);
 
-    // Only need to setup form and make form bindings once.
-    // If form has already been setup, just let bindings be executed.
-    if (form.data('remotipartSubmitted') === undefined) remotipart.setup(form);
+    remotipart.setup(form);
 
     // If browser does not support submit bubbling, then this live-binding will be called before direct
     // bindings. Therefore, we should directly call any direct bindings before remotely submitting form.
