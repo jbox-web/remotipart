@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{remotipart}
-  s.version = "0.4.2"
+  s.version = "1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Greg Leppert", "Steve Schwartz"]
@@ -28,13 +28,13 @@ Gem::Specification.new do |s|
      "VERSION_COMPATIBILITY.rdoc",
      "lib/generators/remotipart/install/install_generator.rb",
      "lib/remotipart.rb",
+     "lib/remotipart/middleware.rb",
      "lib/remotipart/rails.rb",
      "lib/remotipart/rails/engine.rb",
      "lib/remotipart/rails/railtie.rb",
      "lib/remotipart/rails/version.rb",
-     "lib/remotipart/middleware.rb",
-     "lib/remotipart/request_helper.rb",
      "lib/remotipart/render_overrides.rb",
+     "lib/remotipart/request_helper.rb",
      "lib/remotipart/view_helper.rb",
      "remotipart.gemspec",
      "test/helper.rb",
