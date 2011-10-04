@@ -170,9 +170,6 @@
       addedFields.push($("<input type='hidden' name='X-Http-Accept'>")
         .attr("value", accepts).appendTo(form));
 
-      addedFields.push($("<input type='hidden' name='_method'>")
-        .attr("value", options.type).appendTo(form));
-
       return {
 
         // The `send` function is called by jQuery when the request should be
