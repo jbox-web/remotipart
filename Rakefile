@@ -17,7 +17,7 @@ begin
     gem.version = Remotipart::Rails::VERSION
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
-  Jeweler::GemcutterTasks.new
+  Jeweler::RubygemsDotOrgTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
@@ -47,7 +47,7 @@ task :test => :check_dependencies
 task :default => :test
 
 require 'rake/rdoctask'
-require 'lib/remotipart/rails/version'
+require File.expand_path('../lib/remotipart/rails/version', __FILE__)
 Rake::RDocTask.new do |rdoc|
   version = Remotipart::Rails::VERSION
 
