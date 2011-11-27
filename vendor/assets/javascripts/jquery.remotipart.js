@@ -58,7 +58,7 @@
 
     // If browser does not support submit bubbling, then this live-binding will be called before direct
     // bindings. Therefore, we should directly call any direct bindings before remotely submitting form.
-    if (!$.support.submitBubbles && $.rails.callFormSubmitBindings(form) === false) return $.rails.stopEverything(e);
+    if (!$.support.submitBubbles && $().jquery < '1.7' && $.rails.callFormSubmitBindings(form) === false) return $.rails.stopEverything(e);
 
     // Manually call jquery-ujs remote call so that it can setup form and settings as usual,
     // and trigger the `ajax:beforeSend` callback to which remotipart binds functionality.
