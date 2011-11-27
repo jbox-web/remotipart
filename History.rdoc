@@ -1,5 +1,11 @@
 = History
 
+=== 1.0.1 / 2011-11-27
+
+* Minor Enhancements
+  * Added support for non-post methods from Rails's `_method` hidden input.
+  * Fixed IE form submit-bubbling support for jquery 1.7
+
 === 1.0 / 2011-08-26
 
 * New Features
