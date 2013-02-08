@@ -1,5 +1,9 @@
 = History
 
+=== 1.0.3 / 2013-02-08
+
+* Fixed for jquery-rails v2.2.x (i.e. jQuery v1.9.x)
+
 === 1.0.2 / 2012-02-03
 
 * Minor Enhancements
