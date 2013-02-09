@@ -6,14 +6,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "remotipart"
-    gem.summary = %Q{Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jQuery.}
-    gem.description = %Q{Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jQuery.
+    gem.summary = %Q{Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jquery-rails.}
+    gem.description = %Q{Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jquery-rails.
     This gem augments the native Rails 3 jQuery-UJS remote form function enabling asynchronous file uploads with little to no modification to your application.
     }
     gem.email = %w{greg@formasfunction.com steve@alfajango.com}
-    gem.homepage = "http://www.alfajango.com/blog/remotipart-rails-gem/"
+    gem.homepage = "http://opensource.alfajango.com/remotipart/"
     gem.authors = ["Greg Leppert", "Steve Schwartz"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.version = Remotipart::Rails::VERSION
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

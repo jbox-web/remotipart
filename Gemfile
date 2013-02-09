@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rake'
-gem 'jeweler'
+group :development do
+  gem 'rake'
+  gem 'jeweler'
+  # This conflicts with jeweler gemspec generation,
+  # causes dependencies to be added to gemspec recursively
+  #gemspec
+end
 
-gemspec
