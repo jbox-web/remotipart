@@ -1,5 +1,9 @@
 = History
 
+=== 1.0.4 / 2013-02-09
+
+* Fixed render override compatibility with other gems that override render (e.g. wicked_pdf)
+
 === 1.0.3 / 2013-02-08
 
 * Fixed for jquery-rails v2.2.x (i.e. jQuery v1.9.x)
