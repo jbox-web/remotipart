@@ -13,7 +13,7 @@ module Remotipart
     def render_with_remotipart *args
       render_without_remotipart *args
       if remotipart_submitted?
-        response.body = %{<textarea data-type=\"#{content_type}\" response-code=\"#{response.response_code}\">#{escape_once(response.body)}</textarea>}
+        response.body = %{<textarea data-type=\"#{response.content_type}\" data-status=\"#{response.response_code}\" data-statusText=\"#{response.message}\">#{response.body}</textarea>}
         response.content_type = Mime::HTML
       end
       response_body
