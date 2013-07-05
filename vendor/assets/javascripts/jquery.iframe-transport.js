@@ -201,6 +201,9 @@
                     root ? (root.textContent || root.innerText) : null
                 };
               cleanUp();
+              if (!jqXHR.responseText) {
+                jqXHR.responseText = content.text;
+              }
               completeCallback(status, statusText, content, type ?
                 ("Content-Type: " + type) :
                 null);
