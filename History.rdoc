@@ -1,5 +1,13 @@
 = History
 
+=== 1.1.1 / 2013-07-05
+
+* Fixed issue with GET params not being available in middleware.
+* Fixed issue with clicked submit button not being submitted via remotipart ajax.
+* Fixed issue with HTML not being escaped correctly.
+* Fixed issue with iframe-transport on jQuery 1.10.x.
+* Fixed compatibility issue with Rails 4.
+
 === 1.1.0 / 2013-07-04
 
 * Updated to latest iframe-transport.
