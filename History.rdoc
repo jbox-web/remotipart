@@ -1,5 +1,10 @@
 = History
 
+=== 1.2.0 / 2013-07-06
+
+* Removed support for older jquery-ujs and jquery < 1.7.
+* Fixed json (and other type) parsing issues, only html_escape HTML responses.
+
 === 1.1.1 / 2013-07-05
 
 * Fixed issue with GET params not being available in middleware.
