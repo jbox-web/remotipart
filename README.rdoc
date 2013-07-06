@@ -13,7 +13,7 @@ This gem augments the native Rails jQuery remote form functionality enabling asy
 
 == Installation
 
-<b>Your app should be using jquery-rails gem v1.0.12 or above (except jquery-rails v2.0.3 and v2.1.0; there was a {bug in jquery-rails}[https://github.com/rails/jquery-ujs/issues/271] which causes remotiarpt to not work for those versions).</b>
+<b>Your app should be using jquery-rails gem v2.3.0 or above.</b>
 
 If you're using an old version of the jquery-rails gem,
 make sure you have a supported jquery-ujs (rails.js or jquery_ujs.js) version from {VERSION_COMPATIBILITY}[https://github.com/JangoSteve/remotipart/blob/master/VERSION_COMPATIBILITY.rdoc].
@@ -23,7 +23,7 @@ make sure you have a supported jquery-ujs (rails.js or jquery_ujs.js) version fr
 
   * Add this line to your GEMFILE (use the appropriate version from the compatibilty chart if needed)
 
-   gem 'remotipart', '~> 1.0'
+   gem 'remotipart', '~> 1.1'
 
   * And run
 
@@ -139,4 +139,4 @@ Thank you to {Adam Kerr}[https://github.com/ajrkerr] for helping move over to th
 
 == Copyright
 
-Copyright (c) 2011 {Steve Schwartz}[https://github.com/JangoSteve], {Greg Leppert}[https://github.com/leppert]. See LICENSE for details.
+Copyright (c) 2013 {Steve Schwartz}[https://github.com/JangoSteve], {Greg Leppert}[https://github.com/leppert]. See LICENSE for details.
