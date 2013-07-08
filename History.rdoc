@@ -1,5 +1,9 @@
 = History
 
+=== 1.2.1 / 2013-07-07
+
+* Added automatic authenticity_token detection and appending to iframe submission.
+
 === 1.2.0 / 2013-07-06
 
 * Removed support for older jquery-ujs and jquery < 1.7.
