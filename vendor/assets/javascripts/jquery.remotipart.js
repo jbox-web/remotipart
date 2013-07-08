@@ -9,7 +9,10 @@
 
     setup: function(form) {
       // Preserve form.data('ujs:submit-button') before it gets nulled by $.ajax.handleRemote
-      var button = form.data('ujs:submit-button');
+      var button = form.data('ujs:submit-button'),
+          csrfParam = $('meta[name="csrf-param"]').attr('content'),
+          csrfToken = $('meta[name="csrf-token"]').attr('content'),
+          csrfInput = form.find('input[name="' + csrfParam + '"]').length;
 
       form
         // Allow setup part of $.rails.handleRemote to setup remote settings before canceling default remote handler
@@ -41,6 +44,9 @@
           // Modify some settings to integrate JS request with rails helpers and middleware
           if (settings.dataType === undefined) { settings.dataType = 'script *'; }
           settings.data.push({name: 'remotipart_submitted', value: true});
+          if (csrfToken && csrfParam && !csrfInput) {
+            settings.data.push({name: csrfParam, value: csrfToken});
+          }
 
           // Allow remotipartSubmit to be cancelled if needed
           if ($.rails.fire(form, 'ajax:remotipartSubmit', [xhr, settings])) {
