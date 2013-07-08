@@ -11,7 +11,7 @@ This gem augments the native Rails jQuery remote form functionality enabling asy
 * {Rails 3 or Rails 4}[http://github.com/rails/rails]
 * {The jquery-rails gem}[http://rubygems.org/gems/jquery-rails]
 
-_The jquery-rails gem is included in Rails 3 and Rails 4 by default, and installs {jQuery}[http://jquery.com] and the {Rails jQuery UJS driver (jquery-ujs)}[https://github.com/rails/jquery-ujs]_
+<em>The jquery-rails gem is included in Rails 3 and Rails 4 by default, and installs {jQuery}[http://jquery.com] and the {Rails jQuery UJS driver (jquery-ujs)}[https://github.com/rails/jquery-ujs]</em>
 
 == Installation
 
