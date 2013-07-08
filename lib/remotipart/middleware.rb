@@ -11,15 +11,17 @@ module Remotipart
       # Get request params
       params = Rack::Request.new(env).params
 
-      # This was using an iframe transport, and is therefore an XHR
-      # This is required if we're going to override the http_accept
-      if params and params['X-Requested-With'] == 'IFrame'
-        env['HTTP_X_REQUESTED_WITH'] = 'xmlhttprequest'
-      end
+      if params
+        # This was using an iframe transport, and is therefore an XHR
+        # This is required if we're going to override the http_accept
+        if params['X-Requested-With'] == 'IFrame'
+          env['HTTP_X_REQUESTED_WITH'] = 'xmlhttprequest'
+        end
 
-      # Override the accepted format, because it isn't what we really want
-      if params and params['X-Http-Accept']
-        env['HTTP_ACCEPT'] = params['X-Http-Accept']
+        # Override the accepted format, because it isn't what we really want
+        if params['X-Http-Accept']
+          env['HTTP_ACCEPT'] = params['X-Http-Accept']
+        end
       end
 
       @app.call(env)
