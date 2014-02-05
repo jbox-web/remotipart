@@ -68,7 +68,7 @@ make sure you have a supported jquery-ujs (rails.js or jquery_ujs.js) version fr
 
 === Example
 
-sample_layout.html.erb
+<tt>sample_layout.html.erb</tt>
   <%= form_for @sample, :html => { :multipart => true }, :remote => true do |f| %>
     <div class="field">
       <%= f.label :file %>
@@ -79,7 +79,7 @@ sample_layout.html.erb
     </div>
   <% end %>
 
-sample_controller.rb
+<tt>sample_controller.rb</tt>
   def create
     respond_to do |format|
       if @sample.save
@@ -88,7 +88,7 @@ sample_controller.rb
     end
   end
 
-create.js.erb
+<tt>create.js.erb</tt>
   // Display a Javascript alert
   alert('success!');
   <% if remotipart_submitted? %>
@@ -96,6 +96,21 @@ create.js.erb
   <% else %>
     alert('submitted via native jquery-ujs')
   <% end %>
+
+The content type requested from the application can be overridden via the <tt>data-type</tt> HTML5 attribute:
+
+<tt>sample_layout2.html.erb</tt>
+  <%= form_for @sample, :html => { :multipart => true }, :remote => true, :data => { :type => :html } do |f| %>
+    <div class="field">
+      <%= f.label :file %>
+      <%= f.file_field :file %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+In this case, the application should serve HTML using a <tt>create.html.erb</tt> template instead of JavaScript.
 
 == Note on Patches/Pull Requests
 
