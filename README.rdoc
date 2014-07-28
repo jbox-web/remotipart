@@ -55,7 +55,7 @@ make sure you have a supported jquery-ujs (rails.js or jquery_ujs.js) version fr
 * For multipart / forms with file inputs, set your form_for to remote as you would for a normal ajax form:
    :remote => true
 * When Javascript is enabled in the user's browser, the form, including the file, will be submitted asynchronously to your controller with:
-   :format == 'js'
+   :format => 'js'
 * If you need to determine if a particular request was made via a remotipart-enabled form...
   * from your Rails controller or view:
 
