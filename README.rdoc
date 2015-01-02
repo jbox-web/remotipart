@@ -118,7 +118,7 @@ to test the file upload functionality of remotipart (since the browsers running 
 upload input using javascript). So, instead we created a demo Rails app using remotipart with all remotipart functionality tested using RSpec and Capybara.
 
 * {Demo Rails App with Tests}[https://github.com/JangoSteve/Rails-jQuery-Demo/tree/remotipart]
-  * {Tests}[https://github.com/JangoSteve/Rails-jQuery-Demo/blob/remotipart/spec/integration/comments_spec.rb]
+  * {Tests}[https://github.com/JangoSteve/Rails-jQuery-Demo/blob/master/spec/features/comments_spec.rb]
 
 To run tests:
 
