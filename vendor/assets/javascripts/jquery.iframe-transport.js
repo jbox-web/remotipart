@@ -166,7 +166,10 @@
       // clones. This should also avoid introducing unwanted changes to the
       // page layout during submission.
       markers = files.after(function(idx) {
-        return $(this).clone().prop("disabled", true);
+        var $el = $(this);
+        var clone = $el.clone();
+        clone[0].files = $el[0].files;
+        return clone.prop("disabled", true);
       }).next();
       files.appendTo(form);
 
