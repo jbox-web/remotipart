@@ -168,7 +168,7 @@
       markers = files.after(function(idx) {
         var $el = $(this);
         var clone = $el.clone();
-        clone[0].files = $el[0].files;
+        clone.value = $el[0].files;
         return clone.prop("disabled", true);
       }).next();
       files.appendTo(form);
