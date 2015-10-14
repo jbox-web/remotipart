@@ -67,7 +67,13 @@ make sure you have a supported jquery-ujs (rails.js or jquery_ujs.js) version fr
       $(form).bind("ajax:success", function(){
         if ( $(this).data('remotipartSubmitted') )
       });
+* If you want to be notified when the upload is complete (which can be either success or error)
+  * from your javascript:
 
+      $(form).on("ajax:remotipartComplete", function(e, data){
+        console.log(e, data)
+      });
+      
 === Example
 
 sample_layout.html.erb
