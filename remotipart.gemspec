@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
     "vendor/assets/javascripts/jquery.remotipart.js"
   ]
   s.homepage = "http://opensource.alfajango.com/remotipart/"
+  s.license = "MIT"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.15"
   s.summary = "Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jquery-rails."
