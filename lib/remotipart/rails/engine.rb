@@ -14,7 +14,13 @@ module Remotipart
       end
 
       initializer "remotipart.include_middelware" do
-        config.app_middleware.insert_after ActionDispatch::ParamsParser, Middleware
+        if ::Rails.version >= '5'
+          # Rails 5 no longer instantiates ActionDispatch::ParamsParser
+          # https://github.com/rails/rails/commit/a1ced8b52ce60d0634e65aa36cb89f015f9f543d
+          config.app_middleware.use Middleware
+        else
+          config.app_middleware.insert_after ActionDispatch::ParamsParser, Middleware
+        end
       end
     end
 
