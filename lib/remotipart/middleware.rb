@@ -11,7 +11,9 @@ module Remotipart
       # Get request params
       begin
         params = Rack::Request.new(env).params
-      rescue
+      rescue TypeError => e
+        logger.error e.message
+        logger.error e.backtrace.join("\n")
       end
 
       if params
