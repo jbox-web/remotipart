@@ -12,8 +12,8 @@ module Remotipart
       begin
         params = Rack::Request.new(env).params
       rescue TypeError => e
-        logger.error e.message
-        logger.error e.backtrace.join("\n")
+        ::Rails.logger.warn e.message
+        ::Rails.logger.warn e.backtrace.join("\n")
       end
 
       if params
