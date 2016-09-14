@@ -20,4 +20,5 @@ pkg
 .bundle
 
 ## PROJECT::SPECIFIC
+Gemfile.lock
 imports/*
