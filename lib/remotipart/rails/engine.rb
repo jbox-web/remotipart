@@ -10,7 +10,11 @@ module Remotipart
 
       initializer "remotipart.controller_helper" do
         ActionController::Base.send :include, RequestHelper
-        ActionController::Base.send :include, RenderOverrides
+        if Module.method_defined? :prepend
+          ActionController::Base.send :prepend, RenderPrepend
+        else
+          ActionController::Base.send :include, RenderOverrides
+        end
       end
 
       initializer "remotipart.include_middelware" do
