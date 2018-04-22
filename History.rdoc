@@ -1,5 +1,9 @@
 = History
 
+=== 1.4.1 / 2018-04-22
+
+* Fixed ActionView::Template::Error in web-console.
+
 === 1.4.0 / 2018-04-09
 
 * Added jQuery 3 compatibility.
