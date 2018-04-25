@@ -1,6 +1,6 @@
 = History
 
-=== 1.4.1 / 2018-04-22
+=== 1.4.2 / 2018-04-25
 
 * Fixed ActionView::Template::Error in web-console.
 
