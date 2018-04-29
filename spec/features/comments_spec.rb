@@ -149,7 +149,6 @@ describe 'comments', type: :feature do
   end
 
   it "allows custom data-type on form", js: true do
-    pending "needs https://github.com/cmlenz/jquery-iframe-transport/pull/26"
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:success', function(evt, data, status, xhr) { $('#comments').after(xhr.responseText); });")
 
@@ -169,7 +168,6 @@ describe 'comments', type: :feature do
   end
 
   it "escapes html response content properly", js: true do
-    pending "needs https://github.com/cmlenz/jquery-iframe-transport/pull/26"
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:success', function(evt, data, status, xhr) { $('#comments').after(xhr.responseText); });")
 
