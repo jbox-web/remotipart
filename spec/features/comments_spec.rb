@@ -333,20 +333,20 @@ describe 'comments', type: :feature do
     click_button 'Create Comment'
 
     expect(page).to have_css("div.remotipart", :count => 1)
-    # Needed to force page capybara to wiat for the above requests to finish
+    # Needed to force page capybara to wait for the above requests to finish
     form = find('form')
 
     # replace form html, in order clear out the file field (couldn't think of a better way)
-    page.execute_script("inputs = $('form').find(':file'); inputs.remove();")
+    page.evaluate_script("inputs = $('form').find(':file'); inputs.remove();")
     fill_in 'comment_subject', with: 'Hi'
     fill_in 'comment_body', with: 'there'
     click_button 'Create Comment'
 
     expect(page).to have_css("div.remotipart", :count => 1)
-    # Needed to force page capybara to wiat for the above requests to finish
+    # Needed to force page capybara to wait for the above requests to finish
     form = find('form')
 
-    page.execute_script("$('form').append(inputs);")
+    page.evaluate_script("$('form').append(inputs);")
     fill_in 'comment_subject', with: 'Hi'
     fill_in 'comment_body', with: 'there'
     attach_file 'comment_attachment', file_path
