@@ -9,7 +9,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rails'
+  gem 'appraisal'
   gem 'jquery-rails'
   gem 'sqlite3'
   gem 'paperclip'
