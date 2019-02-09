@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
 require 'selenium-webdriver'
+require 'chromedriver-helper'
 
 def register_driver(driver_name, args = [])
   Capybara.register_driver(driver_name) do |app|
