@@ -104,12 +104,12 @@ describe 'comments', type: :feature do
     fill_in 'comment_body', with: 'there'
     click_button 'Create Comment'
 
-    expect(button[:disabled]).to be true
+    expect(button[:disabled]).to eq 'true'
     expect(button.value).to eq "Submitting..."
 
     sleep 1.5
 
-    expect(button[:disabled]).to be false
+    expect(button[:disabled]).to be nil
     expect(button.value).to eq "Create Comment"
   end
 
@@ -333,26 +333,20 @@ describe 'comments', type: :feature do
     click_button 'Create Comment'
 
     expect(page).to have_css("div.remotipart", :count => 1)
-    # Needed to force page capybara to wait for the above requests to finish
-    form = find('form')
+  end
 
-    # replace form html, in order clear out the file field (couldn't think of a better way)
+  it "doesn't submits via remotipart when a file upload is not present", js: true do
+    visit root_path
+    page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function(evt, xhr, data) { $('#comments').after('<div class=\"remotipart\">remotipart!</div>'); });")
+
+    click_link 'New Comment with Attachment'
     page.evaluate_script("inputs = $('form').find(':file'); inputs.remove();")
+
     fill_in 'comment_subject', with: 'Hi'
     fill_in 'comment_body', with: 'there'
     click_button 'Create Comment'
 
-    expect(page).to have_css("div.remotipart", :count => 1)
-    # Needed to force page capybara to wait for the above requests to finish
-    form = find('form')
-
-    page.evaluate_script("$('form').append(inputs);")
-    fill_in 'comment_subject', with: 'Hi'
-    fill_in 'comment_body', with: 'there'
-    attach_file 'comment_attachment', file_path
-    click_button 'Create Comment'
-
-    expect(page).to have_css("div.remotipart", :count => 2)
+    expect(page).to have_css("div.remotipart", :count => 0)
   end
 
   it "Disables submit button while submitting with remotipart", js: true do
@@ -373,7 +367,7 @@ describe 'comments', type: :feature do
     expect(page.evaluate_script("window.commitButtonDisabled")).to be true
     expect(page.evaluate_script("window.commitButtonValue")).to eq "Submitting..."
 
-    expect(button[:disabled]).to be false
+    expect(button[:disabled]).to be nil
     expect(button.value).to eq "Create Comment"
   end
 
