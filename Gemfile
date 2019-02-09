@@ -1,23 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-group :development do
-  gem 'rake'
-  gem 'jeweler'
-  # This conflicts with jeweler gemspec generation,
-  # causes dependencies to be added to gemspec recursively
-  #gemspec
-end
-
-group :development, :test do
-  gem 'appraisal'
-  gem 'jquery-rails'
-  gem 'sqlite3'
-  gem 'paperclip'
-  gem 'remotipart', path: '.'
-end
-
-group :test do
-  gem 'database_cleaner'
-  gem 'poltergeist'
-  gem 'rspec-rails'
-end
+gemspec
