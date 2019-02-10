@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-module Remotipart
+# A middleware to look for our form parameters and
+# encourage Rails to respond with the requested format
 
-  # A middleware to look for our form parameters and
-  # encourage Rails to respond with the requested format
+module Remotipart
   class Middleware
+
     def initialize(app)
       @app = app
     end
@@ -33,5 +34,6 @@ module Remotipart
 
       @app.call(env)
     end
+
   end
 end

@@ -17,13 +17,7 @@ DummyApp::Application.configure do
     config.public_file_server.enabled = true
     config.public_file_server.headers = {'Cache-Control' => 'public, max-age=3600'}
   else
-    if Rails::VERSION::MAJOR < 4
-      config.assets.enabled = true
-      config.assets.debug = true
-      config.serve_static_assets = true
-    else
-      config.serve_static_files   = true
-    end
+    config.serve_static_files   = true
     config.static_cache_control = 'public, max-age=3600'
   end
 
