@@ -1,4 +1,4 @@
-class AddAttachmentToComment < ActiveRecord::Migration
+class AddAttachmentToComment < ActiveRecord::Migration[5.2]
   def self.up
     add_column :comments, :attachment_file_name,    :string
     add_column :comments, :attachment_content_type, :string
