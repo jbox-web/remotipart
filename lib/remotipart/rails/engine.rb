@@ -14,7 +14,7 @@ module Remotipart
         ActionController::Base.send :include, RenderOverrides
       end
 
-      initializer 'remotipart.include_middelware' do
+      initializer 'remotipart.include_middleware' do
         # Rails 5 no longer instantiates ActionDispatch::ParamsParser
         # https://github.com/rails/rails/commit/a1ced8b52ce60d0634e65aa36cb89f015f9f543d
         config.app_middleware.use Middleware
