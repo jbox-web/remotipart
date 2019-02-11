@@ -7,7 +7,7 @@ end
 
 # Load Rails dummy app
 ENV['RAILS_ENV'] = 'test'
-require File.expand_path('dummy_app/config/environment', __dir__)
+require File.expand_path('dummy/config/environment.rb', __dir__)
 
 # Load test gems
 require 'rspec/rails'
