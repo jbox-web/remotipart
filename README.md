@@ -4,6 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/jbox-web/remotipart.svg)](https://github.com/jbox-web/remotipart/releases/latest)
 [![Build Status](https://travis-ci.org/jbox-web/remotipart.svg?branch=master)](https://travis-ci.org/jbox-web/remotipart)
 [![Code Climate](https://codeclimate.com/github/jbox-web/remotipart/badges/gpa.svg)](https://codeclimate.com/github/jbox-web/remotipart)
+[![Test Coverage](https://codeclimate.com/github/jbox-web/remotipart/badges/coverage.svg)](https://codeclimate.com/github/jbox-web/remotipart/coverage)
 
 Remotipart is a Ruby on Rails gem enabling AJAX file uploads with jQuery in Rails 5 remote forms.
 
