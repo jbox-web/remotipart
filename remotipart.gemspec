@@ -10,11 +10,10 @@ Gem::Specification.new do |s|
   s.email       = ['greg@formasfunction.com', 'steve@alfajango.com']
   s.homepage    = 'https://github.com/jbox-web/remotipart'
   s.summary     = 'Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jquery-rails.'
-  s.description = %Q{Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jquery-rails.
-    This gem augments the native Rails 3 jQuery-UJS remote form function enabling asynchronous file uploads with little to no modification to your application.
-  }
-  s.license = 'MIT'
-  s.files   = `git ls-files`.split("\n")
+  s.description = 'This gem augments the native Rails jQuery UJS remote form function enabling asynchronous file uploads with little to no modification to your application.'
+  s.license     = 'MIT'
+
+  s.files = `git ls-files`.split("\n")
 
   s.add_runtime_dependency 'rails', '>= 5.0'
 
