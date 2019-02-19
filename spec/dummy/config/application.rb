@@ -1,12 +1,17 @@
-require File.expand_path('../boot', __FILE__)
+# frozen_string_literal: true
 
+# Load Bundler
+require_relative 'boot'
+
+# Load Rails
 require 'rails/all'
+
+# Require the gems listed in Gemfile
+Bundler.require(*Rails.groups)
+
+# Load tested lib
 require 'jquery-rails'
 require 'paperclip'
-
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
 
 module DummyApp
   class Application < Rails::Application
