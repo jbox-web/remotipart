@@ -1,25 +1,16 @@
-## MAC OS
-.DS_Store
+# Ignore bundler config.
+.bundle/
 
-## TEXTMATE
-*.tmproj
-tmtags
-
-## EMACS
-*~
-\#*
-.\#*
-
-## VIM
-*.swp
-
-## PROJECT::GENERAL
-coverage
-rdoc
-pkg
-.bundle
-
-## PROJECT::SPECIFIC
+# Ignore Gemfile.lock
 Gemfile.lock
 gemfiles/*.lock
-imports/*
+
+# Ignore test files
+coverage/
+
+# Ignore dummy app files
+spec/dummy/db/*.sqlite3
+spec/dummy/db/*.sqlite3-journal
+spec/dummy/log/*.log
+spec/dummy/public/
+spec/dummy/tmp/
