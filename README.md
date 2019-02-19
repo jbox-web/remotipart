@@ -1,4 +1,4 @@
-## Remotipart: Rails jQuery File Uploads
+# Remotipart: Rails jQuery File Uploads
 
 [![GitHub license](https://img.shields.io/github/license/jbox-web/remotipart.svg)](https://github.com/jbox-web/remotipart/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/jbox-web/remotipart.svg)](https://github.com/jbox-web/remotipart/releases/latest)
@@ -12,25 +12,17 @@ This gem augments the native Rails jQuery remote form functionality enabling asy
 
 * [How AJAX File Uploads Work](http://www.alfajango.com/blog/ajax-file-uploads-with-the-iframe-method/)
 
-## Dependencies
-
-* [Rails 5](http://github.com/rails/rails)
-* [jQuery]()
-
-
 ## Installation
 
-Add this line to your application's Gemfile:
+Put this in your `Gemfile` :
 
 ```ruby
-gem 'remotipart'
+git_source(:github){ |repo_name| "https://github.com/#{repo_name}.git" }
+
+gem 'remotipart', github: 'jbox-web/remotipart', tag: '1.5.0'
 ```
 
-and then execute:
-
-```console
-$ bundle install
-```
+then run `bundle install`.
 
 
 ## Usage
