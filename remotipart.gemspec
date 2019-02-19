@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = 'remotipart'
   s.version     = Remotipart::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Greg Leppert', 'Steve Schwartz']
-  s.email       = ['greg@formasfunction.com', 'steve@alfajango.com']
+  s.authors     = ['Greg Leppert', 'Steve Schwartz', 'Nicolas Rodriguez']
+  s.email       = ['greg@formasfunction.com', 'steve@alfajango.com', 'nicoladmin@free.fr']
   s.homepage    = 'https://github.com/jbox-web/remotipart'
   s.summary     = 'Remotipart is a Ruby on Rails gem enabling remote multipart forms (AJAX style file uploads) with jquery-rails.'
   s.description = 'This gem augments the native Rails jQuery UJS remote form function enabling asynchronous file uploads with little to no modification to your application.'
