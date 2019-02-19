@@ -21,3 +21,8 @@ before_script:
   - ./cc-test-reporter before-build
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+env:
+  matrix:
+    - JQUERY_VERSION=
+    - JQUERY_VERSION=2
+    - JQUERY_VERSION=3
