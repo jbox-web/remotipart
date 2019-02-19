@@ -1,5 +1,15 @@
 ## CHANGELOG
 
+### 1.5.0 / 2019-02-19
+
+* Drop support of Ruby 2.2
+* Drop support of Ruby 2.3
+* Drop support of Rails 3 and Rails 4
+* Add support of Ruby 2.6
+* Add support of Rails 5
+* Switch to Zeitwerk to load gem files
+* Add tests (thanks to [mshibuya](https://github.com/mshibuya/remotipart/tree/master))
+
 ### 1.4.2 / 2018-04-25
 
 * Fixed ActionView::Template::Error in web-console.
