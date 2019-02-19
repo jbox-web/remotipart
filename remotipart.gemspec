@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'lib/remotipart/rails/version'
+require_relative 'lib/remotipart/version'
 
 Gem::Specification.new do |s|
   s.name        = 'remotipart'
-  s.version     = Remotipart::Rails::VERSION
+  s.version     = Remotipart::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Greg Leppert', 'Steve Schwartz']
   s.email       = ['greg@formasfunction.com', 'steve@alfajango.com']
@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
 
   s.add_runtime_dependency 'rails', '>= 5.0'
+  s.add_runtime_dependency 'zeitwerk'
 
   s.add_development_dependency 'appraisal'
   s.add_development_dependency 'capybara'
