@@ -27,3 +27,7 @@ env:
     - JQUERY_VERSION=
     - JQUERY_VERSION=2
     - JQUERY_VERSION=3
+matrix:
+  exclude:
+    - gemfile: gemfiles/rails_6.0.0.beta2.gemfile
+      rvm: 2.4.5
