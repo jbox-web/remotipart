@@ -104,12 +104,12 @@ describe 'comments', type: :feature do
     fill_in 'comment_body', with: 'there'
     click_button 'Create Comment'
 
-    expect(button[:disabled]).to eq 'true'
+    expect(button[:disabled]).to be true
     expect(button.value).to eq "Submitting..."
 
     sleep 1.5
 
-    expect(button[:disabled]).to be nil
+    expect(button[:disabled]).to be false
     expect(button.value).to eq "Create Comment"
   end
 
@@ -367,7 +367,7 @@ describe 'comments', type: :feature do
     expect(page.evaluate_script("window.commitButtonDisabled")).to be true
     expect(page.evaluate_script("window.commitButtonValue")).to eq "Submitting..."
 
-    expect(button[:disabled]).to be nil
+    expect(button[:disabled]).to be false
     expect(button.value).to eq "Create Comment"
   end
 
