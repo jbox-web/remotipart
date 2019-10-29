@@ -2,7 +2,7 @@
 
 [![GitHub license](https://img.shields.io/github/license/jbox-web/remotipart.svg)](https://github.com/jbox-web/remotipart/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/jbox-web/remotipart.svg)](https://github.com/jbox-web/remotipart/releases/latest)
-[![Build Status](https://travis-ci.org/jbox-web/remotipart.svg?branch=master)](https://travis-ci.org/jbox-web/remotipart)
+[![Build Status](https://travis-ci.com/jbox-web/remotipart.svg?branch=master)](https://travis-ci.com/jbox-web/remotipart)
 [![Code Climate](https://codeclimate.com/github/jbox-web/remotipart/badges/gpa.svg)](https://codeclimate.com/github/jbox-web/remotipart)
 [![Test Coverage](https://codeclimate.com/github/jbox-web/remotipart/badges/coverage.svg)](https://codeclimate.com/github/jbox-web/remotipart/coverage)
 
