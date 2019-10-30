@@ -340,7 +340,7 @@ describe 'comments', type: :feature do
     page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function(evt, xhr, data) { $('#comments').after('<div class=\"remotipart\">remotipart!</div>'); });")
 
     click_link 'New Comment with Attachment'
-    page.evaluate_script("inputs = $('form').find(':file'); inputs.remove();")
+    page.execute_script("inputs = $('form').find(':file'); inputs.remove();")
 
     fill_in 'comment_subject', with: 'Hi'
     fill_in 'comment_body', with: 'there'
