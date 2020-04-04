@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+### 1.6.0 / 2020-04-05
+
+* Add support of Ruby 2.7
+* Drop support of jQuery 1 && 2
+* Add binstubs to ease development
+
 ### 1.5.1 / 2019-11-30
 
 * Add support of Rails 6
