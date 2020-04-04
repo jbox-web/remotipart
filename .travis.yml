@@ -5,7 +5,6 @@ rvm:
   - 2.7.1
   - 2.6.6
   - 2.5.8
-  - 2.4.10
   - ruby-head
 addons:
   chrome: stable
@@ -24,8 +23,5 @@ env:
   matrix:
     - JQUERY_VERSION=3
 matrix:
-  exclude:
-    - gemfile: gemfiles/rails_6.0.2.gemfile
-      rvm: 2.4.10
   allow_failures:
     - rvm: ruby-head
