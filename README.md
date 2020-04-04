@@ -19,7 +19,7 @@ Put this in your `Gemfile` :
 ```ruby
 git_source(:github){ |repo_name| "https://github.com/#{repo_name}.git" }
 
-gem 'remotipart', github: 'jbox-web/remotipart', tag: '1.5.0'
+gem 'remotipart', github: 'jbox-web/remotipart', tag: '1.6.0'
 ```
 
 then run `bundle install`.
