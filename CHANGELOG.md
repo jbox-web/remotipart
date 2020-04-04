@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 1.5.1 / 2019-11-30
+
+* Add support of Rails 6
+
 ### 1.5.0 / 2019-02-19
 
 * Drop support of Ruby 2.2
