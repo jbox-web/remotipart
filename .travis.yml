@@ -6,8 +6,6 @@ rvm:
   - 2.6.6
   - 2.5.8
   - ruby-head
-addons:
-  chrome: stable
 gemfile:
   - gemfiles/rails_5.1.7.gemfile
   - gemfiles/rails_5.2.4.gemfile
@@ -18,9 +16,11 @@ before_script:
   - ./cc-test-reporter before-build
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-env:
-  matrix:
-    - JQUERY_VERSION=3
 matrix:
   allow_failures:
     - rvm: ruby-head
+addons:
+  chrome: stable
+env:
+  matrix:
+    - JQUERY_VERSION=3
