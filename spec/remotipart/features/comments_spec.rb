@@ -356,7 +356,12 @@ describe 'comments', type: :feature do
 
     button = find_button('Create Comment')
     # clicking 'Create Comment' button causes capybara evaluation freeze until request ends, so perform check by JavaScript
-    page.execute_script("$('form').bind('ajax:remotipartComplete', function(data) { window.commitButtonDisabled = $('input[name=\"commit\"]').is(':disabled'); window.commitButtonValue = $('input[name=\"commit\"]').val(); });")
+    page.execute_script %q(
+      $('form').bind('ajax:remotipartComplete', function(data) {
+        window.commitButtonDisabled = $('input[name="commit"]').is(':disabled');
+        window.commitButtonValue = $('input[name="commit"]').val();
+      });
+    )
 
     file_path = File.join(fixture_path, 'qr.jpg')
     fill_in 'comment_subject', with: 'Hi'
