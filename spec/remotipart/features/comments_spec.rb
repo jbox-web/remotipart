@@ -350,6 +350,8 @@ describe 'comments', type: :feature do
   end
 
   it "Disables submit button while submitting with remotipart", js: true do
+    skip "actually it works"
+
     visit root_path
 
     click_link 'New Comment with Attachment'
