@@ -11,6 +11,7 @@ require File.expand_path('dummy/config/environment.rb', __dir__)
 
 # Load test gems
 require 'rspec/rails'
+require 'rspec/retry'
 require 'capybara/rspec'
 require 'capybara/cuprite'
 require 'database_cleaner'

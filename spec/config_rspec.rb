@@ -26,4 +26,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.around(:each) do |ex|
+    ex.run_with_retry retry: 3
+  end
 end
