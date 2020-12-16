@@ -8,7 +8,7 @@ module Remotipart
     rescue
       false
     end
-    alias :remotipart_requested? :remotipart_submitted?
+    alias remotipart_requested? remotipart_submitted?
 
   end
 end

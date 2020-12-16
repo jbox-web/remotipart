@@ -22,14 +22,10 @@ module Remotipart
       if params
         # This was using an iframe transport, and is therefore an XHR
         # This is required if we're going to override the http_accept
-        if params['X-Requested-With'] == 'IFrame'
-          env['HTTP_X_REQUESTED_WITH'] = 'xmlhttprequest'
-        end
+        env['HTTP_X_REQUESTED_WITH'] = 'xmlhttprequest' if params['X-Requested-With'] == 'IFrame'
 
         # Override the accepted format, because it isn't what we really want
-        if params['X-HTTP-Accept']
-          env['HTTP_ACCEPT'] = params['X-HTTP-Accept']
-        end
+        env['HTTP_ACCEPT'] = params['X-HTTP-Accept'] if params['X-HTTP-Accept']
       end
 
       @app.call(env)

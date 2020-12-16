@@ -1,0 +1,26 @@
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.5
+  Exclude:
+    - bin/*
+    - lib/generators/**/*.rb
+    - gemfiles/*
+    - spec/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 115
+
+Style/Alias:
+  EnforcedStyle: prefer_alias
+
+Metrics/MethodLength:
+  Max: 15

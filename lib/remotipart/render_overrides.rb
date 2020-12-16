@@ -7,6 +7,7 @@ module Remotipart
     include ERB::Util
     include ActionView::Helpers::JavaScriptHelper
 
+    # rubocop:disable Style/Alias
     def self.included(base)
       base.class_eval do
         if respond_to? :prepend
@@ -19,6 +20,7 @@ module Remotipart
         end
       end
     end
+    # rubocop:enable Style/Alias
 
     module Prependable
       def render(*args, &block)
@@ -34,6 +36,7 @@ module Remotipart
 
     private
 
+    # rubocop:disable Layout/LineLength, Metrics/AbcSize
     def treat_render_for_remotipart(render_return_value)
       if remotipart_submitted?
         response.body = %{<script type="text/javascript">try{window.parent.document;}catch(err){document.domain=document.domain;}</script><textarea data-type="#{response.content_type}" data-status="#{response.response_code}" data-statusText="#{response.message}"></textarea><script type="text/javascript">document.querySelector("textarea").value="#{escape_javascript(response.body)}";</script>}
@@ -43,5 +46,7 @@ module Remotipart
         render_return_value
       end
     end
+    # rubocop:enable Layout/LineLength, Metrics/AbcSize
+
   end
 end
