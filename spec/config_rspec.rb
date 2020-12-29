@@ -27,7 +27,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.around(:each) do |ex|
-    ex.run_with_retry retry: 3
+  if ENV.key?('GITHUB_ACTIONS')
+    config.around(:each) do |ex|
+      ex.run_with_retry retry: 3
+    end
   end
 end
