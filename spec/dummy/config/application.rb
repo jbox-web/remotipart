@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 
 # Load tested lib
 require 'jquery-rails'
-require 'paperclip'
+require 'carrierwave'
 
 module Dummy
   class Application < Rails::Application
