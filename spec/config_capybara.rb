@@ -1,5 +1,5 @@
 def register_driver(driver_name, args = [])
-  opts = { js_errors: true, window_size: [1920, 1200], browser_options: {} }
+  opts = { js_errors: true, headless: true, window_size: [1920, 1200], browser_options: {} }
   args.each do |arg|
     opts[:browser_options][arg] = nil
   end
@@ -10,7 +10,6 @@ def register_driver(driver_name, args = [])
 end
 
 # Register our own custom drivers
-register_driver(:chrome)
 register_driver(:headless_chrome, %w[disable-gpu no-sandbox disable-dev-shm-usage])
 
 # Configure Capybara JS driver
