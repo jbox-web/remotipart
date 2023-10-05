@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'comments', type: :feature do
+RSpec.describe 'comments', type: :feature do
   it 'creates a new comment', js: true do
     visit root_path
     click_link 'New Comment'
