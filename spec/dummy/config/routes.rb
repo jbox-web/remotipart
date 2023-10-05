@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   match 'comments', to: 'comments#create', via: [:put]
   match 'say', to: 'comments#say', via: [:get]

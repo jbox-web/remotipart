@@ -1,3 +1,4 @@
+# Configure RSpec
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
   config.include RSpec::Matchers
@@ -18,8 +19,11 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.before do
+  config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
     DatabaseCleaner.start
   end
 
