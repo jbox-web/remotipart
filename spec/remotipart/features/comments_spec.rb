@@ -223,7 +223,9 @@ RSpec.describe 'comments', type: :feature do
     #  expect(page).to have_content "Subject can't be blank"
     #end
     expect(page).to have_content "Error status code: 422"
-    expect(page).to have_content "Error status message: Unprocessable Entity"
+
+    message = Rails.version >= "7.1" ? "Content" : "Entity"
+    expect(page).to have_content "Error status message: Unprocessable #{message}"
   end
 
   it "passes the method as _method parameter (rails convention)", js: true do
