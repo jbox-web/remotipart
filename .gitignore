@@ -14,3 +14,6 @@ spec/dummy/db/*.sqlite3-*
 spec/dummy/log/*.log
 spec/dummy/public/
 spec/dummy/tmp/
+
+# Ignore MacOS files
+.DS_Store
