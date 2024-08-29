@@ -25,3 +25,9 @@ Dir[File.expand_path('support/**/*.rb', __dir__)].each { |f| require f }
 # Load our own config
 require_relative 'config_capybara'
 require_relative 'config_rspec'
+
+if Rails.version >= '7.2'
+  def fixture_path
+    fixture_paths
+  end
+end

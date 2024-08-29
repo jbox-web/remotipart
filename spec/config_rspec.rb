@@ -9,7 +9,11 @@ RSpec.configure do |config|
   load Rails.root.join('db', 'schema.rb').to_s
 
   # Set our fixtures path
-  config.fixture_path = File.expand_path('fixtures', __dir__)
+  if Rails.version >= '7.2'
+    config.fixture_paths = File.expand_path('fixtures', __dir__)
+  else
+    config.fixture_path = File.expand_path('fixtures', __dir__)
+  end
 
   # Run tests in random order
   config.order = :random
