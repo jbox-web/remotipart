@@ -5,7 +5,7 @@ module Remotipart
 
     def remotipart_submitted?
       params[:remotipart_submitted] ? true : false
-    rescue
+    rescue # rubocop:disable Style/RescueStandardError
       false
     end
     alias remotipart_requested? remotipart_submitted?

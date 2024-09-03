@@ -4,6 +4,7 @@ require:
   - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   NewCops: enable
@@ -14,20 +15,46 @@ AllCops:
     - gemfiles/*
     - spec/**/*
 
+Gemspec/RequireMFA:
+  Enabled: false
+
+#########
+# STYLE #
+#########
+
 Style/Documentation:
   Enabled: false
 
-Layout/EmptyLinesAroundModuleBody:
+Style/ArgumentsForwarding:
+  Enabled: false
+
+##########
+# LAYOUT #
+##########
+
+Layout/LineLength:
+  Max: 130
+  Exclude:
+    - remotipart.gemspec
+
+Layout/EmptyLines:
+  Enabled: false
+
+Layout/EmptyLineBetweenDefs:
   Enabled: false
 
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
-Layout/LineLength:
-  Max: 115
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
 
-Style/Alias:
-  EnforcedStyle: prefer_alias
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
 
-Metrics/MethodLength:
-  Max: 15
+##########
+# NAMING #
+##########
+
+Naming/BlockForwarding:
+  Enabled: false

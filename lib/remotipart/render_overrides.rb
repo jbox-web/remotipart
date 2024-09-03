@@ -24,7 +24,7 @@ module Remotipart
 
     module Prependable
       def render(*args, &block)
-        treat_render_for_remotipart super(*args, &block)
+        treat_render_for_remotipart super(*args, &block) # rubocop:disable Style/SuperArguments
       end
     end
 

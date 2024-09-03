@@ -10,7 +10,7 @@ module Remotipart
       @app = app
     end
 
-    def call(env)
+    def call(env) # rubocop:disable Metrics/MethodLength
       # Get request params
       begin
         params = Rack::Request.new(env).params
