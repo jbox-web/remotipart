@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module IntegrationHelper
   # If you do something that triggers a confirm, do it inside an accept_js_confirm or reject_js_confirm block
   def accept_js_confirm
@@ -19,10 +21,10 @@ module IntegrationHelper
   # test this, I just don't know it.
   def page_should_not_redirect
     path = current_path
-    text = "bleep bloop"
+    text = 'bleep bloop'
     page.execute_script "var txt = document.createTextNode('#{text}');document.body.appendChild(txt);"
     yield
-    expect(current_path).to eq path
+    expect(page).to have_current_path(path, ignore_query: true)
     expect(page).to have_content(text)
   end
 end

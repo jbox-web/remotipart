@@ -13,7 +13,7 @@ AllCops:
     - bin/*
     - lib/generators/**/*.rb
     - gemfiles/*
-    - spec/**/*
+    - spec/dummy/**/*
 
 Gemspec/RequireMFA:
   Enabled: false
@@ -36,6 +36,7 @@ Layout/LineLength:
   Max: 130
   Exclude:
     - remotipart.gemspec
+    - spec/remotipart/features/comments_spec.rb
 
 Layout/EmptyLines:
   Enabled: false
@@ -58,3 +59,23 @@ Layout/EmptyLinesAroundModuleBody:
 
 Naming/BlockForwarding:
   Enabled: false
+
+#########
+# RSPEC #
+#########
+
+RSpec/MetadataStyle:
+  EnforcedStyle: hash
+
+RSpec/ExampleLength:
+  Exclude:
+    - spec/remotipart/features/comments_spec.rb
+
+RSpec/MultipleExpectations:
+  Max: 9
+
+RSpec/NotToNot:
+  EnforcedStyle: to_not
+
+Capybara/ClickLinkOrButtonStyle:
+  EnforcedStyle: strict

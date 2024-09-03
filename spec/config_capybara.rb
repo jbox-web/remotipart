@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def register_driver(driver_name, args = [])
   opts = { js_errors: true, headless: true, window_size: [1920, 1200], browser_options: {} }
   args.each do |arg|

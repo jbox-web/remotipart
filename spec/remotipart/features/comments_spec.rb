@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe 'comments', type: :feature do
@@ -31,7 +33,7 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_link('Cancel')
   end
 
-  it "cancels creating a comment", js: true do
+  it 'cancels creating a comment', js: true do
     visit root_path
     click_link 'New Comment'
 
@@ -44,7 +46,7 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_link('New Comment')
   end
 
-  it "deletes a comment", js: true do
+  it 'deletes a comment', js: true do
     Comment.create(subject: 'The Great Yogurt', body: 'The Schwarz is strong with this one.')
     visit root_path
 
@@ -58,7 +60,7 @@ RSpec.describe 'comments', type: :feature do
     end
   end
 
-  it "uploads a file", js: true do
+  it 'uploads a file', js: true do
     visit root_path
     click_link 'New Comment with Attachment'
 
@@ -83,19 +85,20 @@ RSpec.describe 'comments', type: :feature do
     end
 
     within '#comments' do
-      expect(page).to have_selector("td", text: comment_subject)
-      expect(page).to have_selector("td", text: comment_body)
-      expect(page).to have_selector("a", text: File.basename(file_path))
-      expect(page).to have_selector("a", text: File.basename(other_file_path))
+      expect(page).to have_css('td', text: comment_subject)
+      expect(page).to have_css('td', text: comment_body)
+      expect(page).to have_css('a', text: File.basename(file_path))
+      expect(page).to have_css('a', text: File.basename(other_file_path))
     end
   end
 
-  it "Disables submit button while submitting", js: true do
+  it 'Disables submit button while submitting', js: true do
     visit root_path
 
     click_link 'New Comment'
+
     # Needed to make test wait for above to finish
-    form = find('form')
+    find('form')
 
     button = find_button('Create Comment')
     page.execute_script(%q{$('form').append('<input name="pause" type="hidden" value=1 />');})
@@ -105,15 +108,15 @@ RSpec.describe 'comments', type: :feature do
     click_button 'Create Comment'
 
     expect(button[:disabled]).to be true
-    expect(button.value).to eq "Submitting..."
+    expect(button.value).to eq 'Submitting...'
 
     sleep 1.5
 
     expect(button[:disabled]).to be false
-    expect(button.value).to eq "Create Comment"
+    expect(button.value).to eq 'Create Comment'
   end
 
-  it "triggers ajax:remotipartSubmit event hook", js: true do
+  it 'triggers ajax:remotipartSubmit event hook', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function() { $('#comments').after('remotipart!'); });")
 
@@ -127,7 +130,7 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_content('remotipart!')
   end
 
-  it "allows remotipart submission to be cancelable via event hook", js: true do
+  it 'allows remotipart submission to be cancelable via event hook', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function() { $('#comments').after('remotipart!'); return false; });")
 
@@ -148,14 +151,14 @@ RSpec.describe 'comments', type: :feature do
     end
   end
 
-  it "allows custom data-type on form", js: true do
+  it 'allows custom data-type on form', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:success', function(evt, data, status, xhr) { $('#comments').after(xhr.responseText); });")
 
     click_link 'New Comment with Attachment'
 
     # Needed to make test wait for above to finish
-    form = find('form')
+    find('form')
     page.execute_script("$('form').attr('data-type', 'html');")
 
     file_path = File.join(fixture_path, 'qr.jpg')
@@ -167,14 +170,14 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_content('HTML response')
   end
 
-  it "allows users to use ajax response data safely", js: true do
+  it 'allows users to use ajax response data safely', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:success', function(evt, data, status, xhr) { $('#comments').after(data); });")
 
     click_link 'New Comment with Attachment'
 
     # Needed to make test wait for above to finish
-    form = find('form')
+    find('form')
     page.execute_script("$('form').attr('data-type', 'html');")
 
     file_path = File.join(fixture_path, 'qr.jpg')
@@ -186,14 +189,14 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_content('HTML response')
   end
 
-  it "escapes html response content properly", js: true do
+  it 'escapes html response content properly', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:success', function(evt, data, status, xhr) { $('#comments').after(xhr.responseText); });")
 
     click_link 'New Comment with Attachment'
 
     # Needed to make test wait for above to finish
-    form = find('form')
+    find('form')
     page.execute_script("$('form').attr('data-type', 'html');")
     page.execute_script("$('form').append('<input type=\"hidden\" name=\"template\" value=\"escape\" />');")
 
@@ -206,12 +209,12 @@ RSpec.describe 'comments', type: :feature do
     expect(find('input[name="quote"]').value).to eq '"'
   end
 
-  it "returns the correct response status", js: true do
+  it 'returns the correct response status', js: true do
     visit root_path
 
     click_link 'New Comment with Attachment'
     # Needed to make test wait for above to finish
-    input = find('#comment_subject')
+    find_by_id('comment_subject')
     page.execute_script("$('#comment_subject').removeAttr('required');")
 
     file_path = File.join(fixture_path, 'qr.jpg')
@@ -219,16 +222,16 @@ RSpec.describe 'comments', type: :feature do
     attach_file 'comment_attachment', file_path
     click_button 'Create Comment'
 
-    #within '#error_explanation' do
-    #  expect(page).to have_content "Subject can't be blank"
-    #end
-    expect(page).to have_content "Error status code: 422"
+    # within '#error_explanation' do
+    #   expect(page).to have_content "Subject can't be blank"
+    # end
+    expect(page).to have_content 'Error status code: 422'
 
-    message = Rails.version >= "7.1" ? "Content" : "Entity"
+    message = Rails.version >= '7.1' ? 'Content' : 'Entity'
     expect(page).to have_content "Error status message: Unprocessable #{message}"
   end
 
-  it "passes the method as _method parameter (rails convention)", js: true do
+  it 'passes the method as _method parameter (rails convention)', js: true do
     visit root_path
 
     click_link 'New Comment with Attachment'
@@ -244,7 +247,7 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_content 'PUT request!'
   end
 
-  it "does not submit via remotipart unless file is present", js: true do
+  it 'does not submit via remotipart unless file is present', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function() { $('#comments').after('remotipart!'); });")
 
@@ -257,12 +260,12 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_no_content('remotipart!')
   end
 
-  it "fires all the ajax callbacks on the form", js: true do
+  it 'fires all the ajax callbacks on the form', js: true do
     visit root_path
     click_link 'New Comment with Attachment'
 
     # Needed to make test wait for above to finish
-    form = find('form')
+    find('form')
 
     page.execute_script("$('form').bind('ajax:beforeSend', function() { $('#comments').after('thebefore'); });")
     page.execute_script("$(document).delegate('form', 'ajax:success', function() { $('#comments').after('success'); });")
@@ -279,12 +282,12 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_content('complete')
   end
 
-  it "fires the ajax callbacks for json data-type with remotipart", js: true do
+  it 'fires the ajax callbacks for json data-type with remotipart', js: true do
     visit root_path
     click_link 'New Comment with Attachment'
 
     # Needed to make test wait for above to finish
-    form = find('form')
+    find('form')
 
     page.execute_script("$('form').data('type', 'json');")
 
@@ -303,12 +306,12 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_content('complete')
   end
 
-  it "only fires the beforeSend hook once", js: true do
+  it 'only fires the beforeSend hook once', js: true do
     visit root_path
     click_link 'New Comment with Attachment'
 
     # Needed to make test wait for above to finish
-    form = find('form')
+    find('form')
 
     page.execute_script("$('form').bind('ajax:beforeSend', function() { $('#comments').after('<div class=\"ajax\">ajax!</div>'); });")
 
@@ -318,10 +321,10 @@ RSpec.describe 'comments', type: :feature do
     attach_file 'comment_attachment', file_path
     click_button 'Create Comment'
 
-    expect(page).to have_css("div.ajax", :count => 1)
+    expect(page).to have_css('div.ajax', count: 1)
   end
 
-  it "cleans up after itself when uploading files", js: true do
+  it 'cleans up after itself when uploading files', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function(evt, xhr, data) { if ($(this).data('remotipartSubmitted')) { $('#comments').after('remotipart before!'); } });")
 
@@ -340,7 +343,7 @@ RSpec.describe 'comments', type: :feature do
     expect(page).to have_content('no remotipart after!')
   end
 
-  it "submits via remotipart when a file upload is present", js: true do
+  it 'submits via remotipart when a file upload is present', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function(evt, xhr, data) { $('#comments').after('<div class=\"remotipart\">remotipart!</div>'); });")
 
@@ -353,10 +356,10 @@ RSpec.describe 'comments', type: :feature do
     attach_file 'comment_attachment', file_path
     click_button 'Create Comment'
 
-    expect(page).to have_css("div.remotipart")
+    expect(page).to have_css('div.remotipart')
   end
 
-  it "does not submit via remotipart when a file upload is not present", js: true do
+  it 'does not submit via remotipart when a file upload is not present', js: true do
     visit root_path
     page.execute_script("$(document).delegate('form', 'ajax:remotipartSubmit', function(evt, xhr, data) { $('#comments').after('<div class=\"remotipart\">remotipart!</div>'); });")
 
@@ -367,11 +370,11 @@ RSpec.describe 'comments', type: :feature do
     fill_in 'comment_body', with: 'there'
     click_button 'Create Comment'
 
-    expect(page).not_to have_css("div.remotipart")
+    expect(page).to have_no_css('div.remotipart')
   end
 
-  it "Disables submit button while submitting with remotipart", js: true do
-    skip "actually it works"
+  it 'Disables submit button while submitting with remotipart', js: true do
+    skip 'actually it works'
 
     visit root_path
 
@@ -392,18 +395,18 @@ RSpec.describe 'comments', type: :feature do
     attach_file 'comment_attachment', file_path
     click_button 'Create Comment'
 
-    expect(page.evaluate_script("window.commitButtonDisabled")).to be true
-    expect(page.evaluate_script("window.commitButtonValue")).to eq "Submitting..."
+    expect(page.evaluate_script('window.commitButtonDisabled')).to be true
+    expect(page.evaluate_script('window.commitButtonValue')).to eq 'Submitting...'
 
     expect(button[:disabled]).to be false
-    expect(button.value).to eq "Create Comment"
+    expect(button.value).to eq 'Create Comment'
   end
 
-  it "submits the clicked button with the form like non-file remote form", js: true do
+  it 'submits the clicked button with the form like non-file remote form', js: true do
     visit root_path
     click_link 'New Comment with Attachment'
 
-    form = find('form')
+    find('form')
     page.execute_script("$('form').bind('ajax:remotipartSubmit', function(e, xhr, settings) { $('#comments').after('<div class=\"params\">' + $.param(settings.data) + '</div>'); });")
 
     file_path = File.join(fixture_path, 'qr.jpg')
@@ -416,8 +419,8 @@ RSpec.describe 'comments', type: :feature do
   end
 
   it "doesn't allow XSS via script injection for text responses", js: true do
-    visit "/say?message=%3C/textarea%3E%3Csvg/onload=alert(domain)%3E&remotipart_submitted=x"
-    expect(page).to have_selector("textarea")
-    expect(find("textarea").value).to eq('</textarea><svg/onload=alert(domain)>')
+    visit '/say?message=%3C/textarea%3E%3Csvg/onload=alert(domain)%3E&remotipart_submitted=x'
+    expect(page).to have_css('textarea')
+    expect(find('textarea').value).to eq('</textarea><svg/onload=alert(domain)>')
   end
 end

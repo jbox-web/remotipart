@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Configure RSpec
 RSpec.configure do |config|
   config.include Rails.application.routes.url_helpers
@@ -31,16 +33,16 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.start
   end
 
-  config.after(:each) do
+  config.after do
     DatabaseCleaner.clean
   end
 
   if ENV.key?('GITHUB_ACTIONS')
-    config.around(:each) do |ex|
+    config.around do |ex|
       ex.run_with_retry retry: 3
     end
   end
