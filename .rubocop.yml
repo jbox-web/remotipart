@@ -13,7 +13,6 @@ AllCops:
     - bin/*
     - gemfiles/*
     - spec/dummy/**/*
-    - lib/generators/**/*.rb
 
 Gemspec/RequireMFA:
   Enabled: false
@@ -37,6 +36,7 @@ Layout/LineLength:
   Exclude:
     - remotipart.gemspec
     - spec/remotipart/features/comments_spec.rb
+    - lib/generators/remotipart/install/install_generator.rb
 
 Layout/EmptyLines:
   Enabled: false

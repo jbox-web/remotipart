@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+# require external dependencies
 require 'zeitwerk'
-loader = Zeitwerk::Loader.for_gem
-generators = "#{__dir__}/generators"
-loader.ignore(generators)
-loader.setup
+
+# load zeitwerk
+Zeitwerk::Loader.for_gem.tap do |loader|
+  loader.ignore("#{__dir__}/generators")
+  loader.setup
+end
 
 module Remotipart
-  require 'remotipart/engine' if defined?(Rails)
+  require_relative 'remotipart/engine' if defined?(Rails)
 end
