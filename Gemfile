@@ -7,7 +7,7 @@ gemspec
 gem 'appraisal', git: 'https://github.com/thoughtbot/appraisal.git'
 
 gem 'capybara'
-gem 'carrierwave'
+gem 'carrierwave', git: 'https://github.com/ollym/carrierwave.git', branch: 'patch-1'
 gem 'cuprite'
 gem 'database_cleaner'
 gem 'guard-rspec'
