@@ -7,7 +7,7 @@ gemspec
 # Dev libs
 gem 'appraisal', git: 'https://github.com/thoughtbot/appraisal.git'
 gem 'capybara'
-gem 'carrierwave', git: 'https://github.com/carrierwaveuploader/carrierwave.git'
+gem 'carrierwave'
 gem 'cuprite'
 gem 'database_cleaner'
 gem 'jquery-rails'
