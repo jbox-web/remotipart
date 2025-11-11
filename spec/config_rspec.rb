@@ -10,6 +10,11 @@ RSpec.configure do |config|
   # Use DB agnostic schema by default
   load Rails.root.join('db', 'schema.rb').to_s
 
+  # bin/rspec --seed 55420
+  # Ambiguous match, found 2 elements matching visible link "Destroy" in
+  # ./spec/remotipart/features/comments_spec.rb:56
+  config.use_transactional_fixtures = true
+
   # Set our fixtures path
   if Rails.version >= '7.2'
     config.fixture_paths = File.expand_path('fixtures', __dir__)
@@ -39,11 +44,5 @@ RSpec.configure do |config|
 
   config.after do
     DatabaseCleaner.clean
-  end
-
-  if ENV.key?('GITHUB_ACTIONS')
-    config.around do |ex|
-      ex.run_with_retry retry: 3
-    end
   end
 end
