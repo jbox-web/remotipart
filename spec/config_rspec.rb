@@ -16,11 +16,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   # Set our fixtures path
-  if Rails.version >= '7.2'
-    config.fixture_paths = File.expand_path('fixtures', __dir__)
-  else
-    config.fixture_path = File.expand_path('fixtures', __dir__)
-  end
+  config.fixture_paths = File.expand_path('fixtures', __dir__)
 
   # Run tests in random order
   config.order = :random
