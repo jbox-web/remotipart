@@ -18,6 +18,7 @@ gem 'rspec-retry'
 gem 'simplecov'
 gem 'sprockets-rails'
 gem 'sqlite3', '~> 2.1.0'
+gem 'warning'
 
 # Dev tools / linter
 gem 'guard-rspec',         require: false
